@@ -31,7 +31,7 @@ namespace Kino
     {
         #region Editable properties
 
-        const int kMaxSliceCount = 128;
+        const int kMaxSliceCount = 512;
 
         [SerializeField, Range(16, kMaxSliceCount)]
         int _sliceCount = 128;

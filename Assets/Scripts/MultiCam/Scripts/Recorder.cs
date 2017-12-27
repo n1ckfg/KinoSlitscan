@@ -6,6 +6,8 @@ using System.IO;
 
 public class Recorder : MonoBehaviour {
 	
+    public enum CaptureMode { SINGLE_CAM, CAM_ARRAY_STILL, CAM_ARRAY_VIDEO };
+    public CaptureMode captureMode = CaptureMode.SINGLE_CAM;
     public enum ImageFormat { FLOAT, ALPHA };
     public ImageFormat imageFormat = ImageFormat.ALPHA;
 	public string fileName = "frame";
@@ -20,7 +22,7 @@ public class Recorder : MonoBehaviour {
 	public int superSample = 1;
 	public int zeroPadding = 4;
 
-    public CameraArray cams;
+    public CameraArray camArray;
 	public GameObject mayaCamera;
 	public float mayaCameraAngleOfView = 54.43f;
 
@@ -51,6 +53,14 @@ public class Recorder : MonoBehaviour {
 		}
 		Directory.CreateDirectory(uniqueFilePath);  
 
+        if (captureMode == CaptureMode.CAM_ARRAY_VIDEO) {
+            for (int i=0; i<camArray.cams.Count; i++) {
+                String subUrl = Path.Combine(uniqueFilePath, String.Format("Cam" + "{1:D0" + zeroPadding + "}", uniqueFilePath, i));
+                Debug.Log(subUrl);
+                Directory.CreateDirectory(subUrl);
+            }
+        }
+
 		timeScaleOrig = Time.timeScale;
 
 		for (int i=0; i < animatorInfo.Length; i++) {
@@ -75,14 +85,28 @@ public class Recorder : MonoBehaviour {
 			} else {
 				inc = counter;
 			}
-			string path = String.Format("{0}/" + fileName + "{1:D0" + zeroPadding + "}.png", uniqueFilePath, inc);
 			Time.timeScale = 0;
 			yield return new WaitForEndOfFrame();
 
-			captureHandler(Camera.main, path, resWidth, resHeight, superSample);
+            if (captureMode == CaptureMode.CAM_ARRAY_VIDEO) {
+                for (int i = 0; i < camArray.cams.Count; i++) {
+                    String path1 = String.Format("{0}/" + "Cam" + "{1:D0" + zeroPadding + "}", uniqueFilePath, i);
+                    String path2 = String.Format(fileName + "{1:D0" + zeroPadding + "}.png", uniqueFilePath, inc);
+                    String path3 = Path.Combine(path1, path2);
+                    captureHandler(camArray.cams[i], path3, resWidth, resHeight, superSample);
+                }
+            } else if (captureMode == CaptureMode.CAM_ARRAY_STILL) {
+                for (int i = 0; i < camArray.cams.Count; i++) {
+                    string path = String.Format("{0}/" + fileName + "{1:D0" + zeroPadding + "}.png", uniqueFilePath, i);
+                    captureHandler(camArray.cams[i], path, resWidth, resHeight, superSample);
+                }
+            } else {
+                string path = String.Format("{0}/" + fileName + "{1:D0" + zeroPadding + "}.png", uniqueFilePath, inc);
+                captureHandler(Camera.main, path, resWidth, resHeight, superSample);
+            }
 
 			Time.timeScale = timeScaleOrig;
-			Debug.Log(path + " " + counter);
+			Debug.Log("saved " + counter);
 			counter++;
 		} else {
 			activate = false;

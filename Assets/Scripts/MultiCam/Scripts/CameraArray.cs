@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CameraArray : MonoBehaviour {
 
+    [HideInInspector] public List<Camera> cams;
+
     private Mesh mesh;
     private Vector3[] vertices;
-    private List<Camera> cams;
     private float distLimit = 0.1f;
 
     private void Awake() {
@@ -18,6 +19,7 @@ public class CameraArray : MonoBehaviour {
     private void Start() {
         for (int i = 0; i < vertices.Length; i++) {
             Vector3 p = transform.TransformPoint(vertices[i]);
+
             bool makeNewCam = true;
             for (int j=0; j < cams.Count; j++) {
                 if (cams[j].transform.position == p) {
@@ -25,9 +27,10 @@ public class CameraArray : MonoBehaviour {
                     break;
                 }
             }
+
             if (makeNewCam) {
                 Camera cam = new GameObject().AddComponent<Camera>();
-                cam.name = "NewCamera" + i;
+                cam.name = "ArrayCamera_" + (i+1);
                 cam.transform.parent = transform;
                 cam.transform.position = p;
                 cam.transform.LookAt(transform);
@@ -35,9 +38,5 @@ public class CameraArray : MonoBehaviour {
             }
         }
     }
-	
-	void Update () {
-		
-	}
 
 }

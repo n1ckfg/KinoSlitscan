@@ -442,7 +442,7 @@ Prefab:
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: resWidth
-      value: 1080
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
@@ -457,12 +457,17 @@ Prefab:
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: timeDelay
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: recMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: resHeight
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17853450f0757ab409deaf04e39ecb86, type: 2}

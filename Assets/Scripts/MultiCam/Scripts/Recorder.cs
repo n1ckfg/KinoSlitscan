@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 
 public class Recorder : MonoBehaviour {
-	
+
     public enum CaptureMode { SINGLE_CAM, CAM_ARRAY_STILL, CAM_ARRAY_VIDEO };
     public CaptureMode captureMode = CaptureMode.SINGLE_CAM;
+    public enum FxMode { NONE, DEPTH, SLITSCAN };
+    public FxMode fxMode = FxMode.NONE;
     public enum ImageFormat { FLOAT, ALPHA };
     public ImageFormat imageFormat = ImageFormat.ALPHA;
 	public string fileName = "frame";
@@ -33,14 +35,34 @@ public class Recorder : MonoBehaviour {
 	}
 
 	public Material depthMat;
-	public bool depthMode = false;
     public AnimatorInfo[] animatorInfo;
 
     private float timeScaleOrig; // track timescale to freeze animation between frames
 	private string uniqueFilePath = "";
 	private bool activate = false;
 
-	private void Start() {
+    private void Awake() {
+        if (captureMode == CaptureMode.SINGLE_CAM) {
+            if (fxMode == FxMode.DEPTH) {
+                Camera.main.gameObject.AddComponent<RecorderDepthPass>();
+            } else if (fxMode == FxMode.SLITSCAN) {
+                ;
+                Camera.main.gameObject.AddComponent<Kino.Slitscan>();
+            }
+        } else {
+            if (fxMode == FxMode.DEPTH) {
+                for (int i = 0; i < camArray.cams.Count; i++) {
+                    camArray.cams[i].gameObject.AddComponent<RecorderDepthPass>();
+                }
+            } else if (fxMode == FxMode.SLITSCAN) {
+                for (int i = 0; i < camArray.cams.Count; i++) {
+                    camArray.cams[i].gameObject.AddComponent<Kino.Slitscan>();
+                }
+            }
+        }
+    }
+
+    private void Start() { 
         if (mayaCamera != null) mayaCameraCorrect(Camera.main);
 		Application.runInBackground = true;
 		Time.fixedDeltaTime = 1.0f/fps;

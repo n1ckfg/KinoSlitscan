@@ -6,4 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Test/Karate.unity
+    path: Assets/Scenes/Main.unity
+    guid: 154a934e40f84614e804aa9de4621468

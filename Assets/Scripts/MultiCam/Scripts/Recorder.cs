@@ -6,27 +6,36 @@ using System.IO;
 
 public class Recorder : MonoBehaviour {
 
+    public enum RecMode { TIME_DELAY, KEY_TRIGGER };
     public enum CaptureMode { SINGLE_CAM, CAM_ARRAY_STILL, CAM_ARRAY_VIDEO };
-    public CaptureMode captureMode = CaptureMode.SINGLE_CAM;
     //public enum FxMode { NONE, DEPTH, SLITSCAN };
-    //public FxMode fxMode = FxMode.NONE;
     public enum ImageFormat { FLOAT, ALPHA };
+
+    [Header("Setup")]
+    public RecMode recMode = RecMode.TIME_DELAY;
+    public CaptureMode captureMode = CaptureMode.SINGLE_CAM;
+    //public FxMode fxMode = FxMode.NONE;
     public ImageFormat imageFormat = ImageFormat.ALPHA;
+
+    [Header("Capture")]
 	public string fileName = "frame";
 	public string filePath = "Frames";
 	public int resWidth = 1920;
 	public int resHeight = 1080;
 	public float fps = 24.0f;
+    public float timeDelay = 0f;
 
 	public int counter = 0;
 	public int counterLimit = 100;
 	
 	public int superSample = 1;
 	public int zeroPadding = 4;
+    
+    public float mayaCameraAngleOfView = 54.43f;
 
+    [Header("Linkage")]
     public CameraArray camArray;
 	public GameObject mayaCamera;
-	public float mayaCameraAngleOfView = 54.43f;
 
 	[System.Serializable]
 	public struct AnimatorInfo {
@@ -40,6 +49,8 @@ public class Recorder : MonoBehaviour {
     private float timeScaleOrig; // track timescale to freeze animation between frames
 	private string uniqueFilePath = "";
 	private bool activate = false;
+    private float markTime = 0f;
+    private bool firstRun = true;
 
     /*
     private void Awake() {
@@ -92,10 +103,24 @@ public class Recorder : MonoBehaviour {
 			animatorInfo[i].animator.speed = animatorInfo[i].animatorSpeed; 
 		}
 
-		activate = true;
+        //activate = true;
+        markTime = Time.realtimeSinceStartup;
 	}
-	
-	private void LateUpdate() {
+
+    private void Update() {
+        if (recMode == RecMode.TIME_DELAY) {
+            if (firstRun && Time.realtimeSinceStartup > markTime + timeDelay) {
+                firstRun = false;
+                activate = true;
+            }
+        } else if (recMode == RecMode.KEY_TRIGGER) {
+            if (Input.GetKeyUp(KeyCode.Space)) {
+                activate = true;
+            }
+        }
+    }
+
+    private void LateUpdate() {
 		if (activate) {
 			StartCoroutine(Capture());
 		}

@@ -454,6 +454,16 @@ Prefab:
       propertyPath: superSample
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: timeDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: recMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17853450f0757ab409deaf04e39ecb86, type: 2}
   m_IsPrefabParent: 0
@@ -574,7 +584,7 @@ Prefab:
         type: 2}
       propertyPath: camPrefab
       value: 
-      objectReference: {fileID: 20512827520109964, guid: dc0ed7c4801b64440bf6907fa57c8449,
+      objectReference: {fileID: 20512827520109964, guid: 9497888a47c3f5343a0bc0f1cb0be90c,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd7afb2d99116e246b6c1ce1d08d0cae, type: 2}

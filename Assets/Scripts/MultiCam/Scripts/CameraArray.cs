@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraArray : MonoBehaviour {
 
-    public float fov = 60f;
-    public Color bgColor = new Color(0f, 0f, 0f, 1f);
+    public Camera camPrefab;
+    //public float fov = 60f;
+    //public Color bgColor = new Color(0f, 0f, 0f, 1f);
 
     [HideInInspector] public List<Camera> cams;
 
@@ -29,16 +30,18 @@ public class CameraArray : MonoBehaviour {
             }
 
             if (makeNewCam) {
-                Camera cam = new GameObject().AddComponent<Camera>();
+                Camera cam = Instantiate(camPrefab, transform);// new GameObject().AddComponent<Camera>();
                 cam.name = "ArrayCamera_" + (i+1);
 
+                /*
                 cam.backgroundColor = bgColor;
                 cam.fieldOfView = fov;
                 cam.clearFlags = CameraClearFlags.SolidColor;
                 cam.nearClipPlane = 0.01f;
                 cam.farClipPlane = 1000f;
+                */
 
-                cam.transform.parent = transform;
+                //cam.transform.parent = transform;
                 cam.transform.position = p;
                 cam.transform.LookAt(transform);
                 cams.Add(cam);

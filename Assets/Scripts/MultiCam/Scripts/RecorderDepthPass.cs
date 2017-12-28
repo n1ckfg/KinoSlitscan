@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class RecorderDepthPass : MonoBehaviour {
 
-    private Recorder rec;
+    public Material depthMat;
+    public bool bypass = false;
+
     private Camera cam;
 
     private void Awake() {
-        rec = GameObject.FindGameObjectWithTag("Recorder").GetComponent<Recorder>();
         cam = GetComponent<Camera>();
 	}
     
     private void OnRenderImage(RenderTexture source, RenderTexture dest) {
         // depthMat material contains shader that reads the destination RenderTexture
-        if (rec.depthMode && rec.depthMat) {
+        if (!bypass && depthMat) {
             cam.depthTextureMode = DepthTextureMode.Depth;
-            Graphics.Blit(source, dest, rec.depthMat);
+            Graphics.Blit(source, dest, depthMat);
         } else {
             cam.depthTextureMode = DepthTextureMode.None;
             Graphics.Blit(source,dest);

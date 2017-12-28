@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &286349035
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -439,6 +439,21 @@ Prefab:
       propertyPath: fxMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: resWidth
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: imageFormat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: superSample
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17853450f0757ab409deaf04e39ecb86, type: 2}
   m_IsPrefabParent: 0
@@ -555,6 +570,12 @@ Prefab:
       propertyPath: fov
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114727673212608752, guid: cd7afb2d99116e246b6c1ce1d08d0cae,
+        type: 2}
+      propertyPath: camPrefab
+      value: 
+      objectReference: {fileID: 20512827520109964, guid: dc0ed7c4801b64440bf6907fa57c8449,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd7afb2d99116e246b6c1ce1d08d0cae, type: 2}
   m_IsPrefabParent: 0

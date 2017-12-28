@@ -8,8 +8,8 @@ public class Recorder : MonoBehaviour {
 
     public enum CaptureMode { SINGLE_CAM, CAM_ARRAY_STILL, CAM_ARRAY_VIDEO };
     public CaptureMode captureMode = CaptureMode.SINGLE_CAM;
-    public enum FxMode { NONE, DEPTH, SLITSCAN };
-    public FxMode fxMode = FxMode.NONE;
+    //public enum FxMode { NONE, DEPTH, SLITSCAN };
+    //public FxMode fxMode = FxMode.NONE;
     public enum ImageFormat { FLOAT, ALPHA };
     public ImageFormat imageFormat = ImageFormat.ALPHA;
 	public string fileName = "frame";
@@ -34,13 +34,14 @@ public class Recorder : MonoBehaviour {
 		public float animatorSpeed;
 	}
 
-	public Material depthMat;
+	//public Material depthMat;
     public AnimatorInfo[] animatorInfo;
 
     private float timeScaleOrig; // track timescale to freeze animation between frames
 	private string uniqueFilePath = "";
 	private bool activate = false;
 
+    /*
     private void Awake() {
         if (captureMode == CaptureMode.SINGLE_CAM) {
             if (fxMode == FxMode.DEPTH) {
@@ -61,6 +62,7 @@ public class Recorder : MonoBehaviour {
             }
         }
     }
+    */
 
     private void Start() { 
         if (mayaCamera != null) mayaCameraCorrect(Camera.main);

@@ -469,6 +469,11 @@ Prefab:
       propertyPath: resHeight
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
+        type: 2}
+      propertyPath: angleOfView
+      value: 38
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17853450f0757ab409deaf04e39ecb86, type: 2}
   m_IsPrefabParent: 0
@@ -573,7 +578,7 @@ Prefab:
     - target: {fileID: 23547976382514230, guid: 62749d532982a984691973ec6695401c,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalScale.x
@@ -793,7 +798,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 50
-  field of view: 35
+  field of view: 22
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

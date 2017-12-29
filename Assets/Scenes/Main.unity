@@ -419,7 +419,7 @@ Prefab:
         type: 2}
       propertyPath: camArray
       value: 
-      objectReference: {fileID: 1363060639}
+      objectReference: {fileID: 1967487386}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: counterLimit
@@ -452,12 +452,12 @@ Prefab:
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: superSample
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: timeDelay
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
@@ -526,7 +526,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e15121f5f042ed46aba81406403f2d2, type: 3}
   m_IsPrefabParent: 0
---- !u!1001 &1363060638
+--- !u!95 &1451448138 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 7e15121f5f042ed46aba81406403f2d2,
+    type: 3}
+  m_PrefabInternal: {fileID: 1355745911}
+--- !u!1001 &1967487385
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -539,7 +544,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -572,30 +577,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62749d532982a984691973ec6695401c, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1363060639 stripped
+--- !u!114 &1967487386 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114137012012753200, guid: 62749d532982a984691973ec6695401c,
     type: 2}
-  m_PrefabInternal: {fileID: 1363060638}
+  m_PrefabInternal: {fileID: 1967487385}
   m_Script: {fileID: 11500000, guid: c33330ca5d549b0459c9d69eadf7d407, type: 3}
---- !u!95 &1451448138 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9500000, guid: 7e15121f5f042ed46aba81406403f2d2,
-    type: 3}
-  m_PrefabInternal: {fileID: 1355745911}
 --- !u!1 &2019046428
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,14 +793,14 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 50
-  field of view: 20
+  field of view: 35
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 3
+  m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3

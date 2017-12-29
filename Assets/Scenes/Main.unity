@@ -419,7 +419,7 @@ Prefab:
         type: 2}
       propertyPath: camArray
       value: 
-      objectReference: {fileID: 1967487386}
+      objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: counterLimit
@@ -462,7 +462,7 @@ Prefab:
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
       propertyPath: recMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114193928014767478, guid: 17853450f0757ab409deaf04e39ecb86,
         type: 2}
@@ -578,7 +578,7 @@ Prefab:
     - target: {fileID: 23547976382514230, guid: 62749d532982a984691973ec6695401c,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4159576444032730, guid: 62749d532982a984691973ec6695401c, type: 2}
       propertyPath: m_LocalScale.x
@@ -592,15 +592,18 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1479259025660992, guid: 62749d532982a984691973ec6695401c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137012012753200, guid: 62749d532982a984691973ec6695401c,
+        type: 2}
+      propertyPath: focalLength
+      value: 38
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62749d532982a984691973ec6695401c, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1967487386 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114137012012753200, guid: 62749d532982a984691973ec6695401c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1967487385}
-  m_Script: {fileID: 11500000, guid: c33330ca5d549b0459c9d69eadf7d407, type: 3}
 --- !u!1 &2019046428
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +801,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 50
-  field of view: 22
+  field of view: 24
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

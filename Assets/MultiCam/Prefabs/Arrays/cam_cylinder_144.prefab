@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479259025660992}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 1.5, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479259025660992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94,5 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33330ca5d549b0459c9d69eadf7d407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alignMode: 0
+  lensMode: 0
+  fieldOfView: 60
+  focalLength: 38
   camPrefab: {fileID: 20512827520109964, guid: 9497888a47c3f5343a0bc0f1cb0be90c, type: 2}
   cams: []
